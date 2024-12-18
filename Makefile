@@ -1,8 +1,7 @@
 default: install
 
 install:
-	-nix profile remove nix-config
-	nix profile install
+	nix run nix-darwin --extra-experimental-features 'flakes nix-command' -- switch --flake .#default
 
-uninstall:
-	nix profile remove nix-config
+fmt:
+	nix fmt
