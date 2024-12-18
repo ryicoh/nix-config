@@ -1,0 +1,38 @@
+{
+  "window.commandCenter": true,
+  "extensions.ignoreRecommendations": true,
+  "git.autofetch": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "cursor.cpp.disabledLanguages": [],
+  "cursor.cpp.enablePartialAccepts": true,
+  "cursor.terminal.usePreviewBox": true,
+  "cursor.composer.collapsePaneInputBoxPills": true,
+  "cursor.cmdk.useThemedDiffBackground": true,
+  "cursor.diffs.useCharacterLevelDiffs": true,
+  "githubPullRequests.pullBranch": "never",
+  "jestrunner.codeLens": ["run"],
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "githubPullRequests.terminalLinksHandler": "github",
+  "terminal.integrated.macOptionIsMeta": true,
+  "roo-cline.allowedCommands": [
+    "npm install",
+    "npm ci",
+    "npm run test",
+    "npm run check",
+    "npm run lint",
+    "npm run format"
+  ],
+  "vim.sneak": true,
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["[", "g"],
+      "commands": ["editor.action.marker.prev"],
+      "silent": true
+    },
+    {
+      "before": ["]", "g"],
+      "commands": ["editor.action.marker.next"],
+      "silent": true
+    }
+  ]
+}
