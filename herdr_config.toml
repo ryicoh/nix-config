@@ -5,6 +5,8 @@ prefix = "ctrl+s"
 detach = "prefix+d"
 split_vertical = "prefix+percent"
 split_horizontal = "prefix+double-quote"
+move_tab_previous = "prefix+{"
+move_tab_next = "prefix+}"
 
 [theme]
 name = "catppuccin-latte"
@@ -13,9 +15,38 @@ name = "catppuccin-latte"
 mouse_capture = true
 mouse_scroll_lines = 5
 
+[ui.sidebar.spaces]
+rows = [
+  ["state_icon", { token = "workspace", bold = true }],
+  ["state_text"],
+]
+
 [ui.sidebar.agents]
 rows = [
-  ["state_icon", "state_text"],
-  ["terminal_title_stripped"],
-  ["workspace", "tab"],
+  [{ token = "workspace", bold = true }],
+  ["state_icon", "terminal_title_stripped"],
 ]
+
+[[keys.command]]
+key = "prefix+shift+h"
+type = "plugin_action"
+command = "jhochenbaum.hunkdiff.review"
+description = "Hunk: review changes"
+
+[[keys.command]]
+key = "prefix+shift+s"
+type = "plugin_action"
+command = "jhochenbaum.hunkdiff.send-review"
+description = "Hunk: send review"
+
+[[keys.command]]
+key = "prefix+shift+c"
+type = "plugin_action"
+command = "jhochenbaum.hunkdiff.review:commit"
+description = "Hunk: review commit"
+
+[[keys.command]]
+key = "prefix+shift+a"
+type = "plugin_action"
+command = "jhochenbaum.hunkdiff.review:staged"
+description = "Hunk: review staged"

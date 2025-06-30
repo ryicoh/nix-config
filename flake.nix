@@ -66,10 +66,11 @@
                 "git-absorb"
                 "hashicorp/tap/terraform"
                 "herdr"
+                "hunk"
                 "libfido2"
                 "mise"
                 "mysql@8.0"
-                "node@22"
+                "node@26"
                 "node@24"
                 "openjdk"
                 {
@@ -83,9 +84,12 @@
                 "tmux"
                 "trivy"
                 "uv"
+                "vim"
                 "vite-plus"
                 "watch"
                 "worktrunk"
+                "lazygit"
+                "lambdalisue/cclens/cclens"
 
                 # "corepack"
                 # "git-lfs"
@@ -94,7 +98,6 @@
                 # "nvim"
                 # "agent-browser"
                 # "hunk"
-                # "lazygit"
                 # "tuicr"
                 # "oven-sh/bun/bun@1.3.13"
                 # "aws-cdk"
@@ -136,19 +139,14 @@
               ];
               casks = [
                 "aws-vpn-client"
-                "claude"
                 "claude-code@latest"
-                "chatgpt"
                 "codex"
-                "codex-app"
                 "cursor"
                 "gcloud-cli"
-                "ghostty"
                 "google-chrome"
                 "hot"
                 "iterm2"
                 "libreoffice"
-                "macvim-app"
                 "notunes"
                 "rectangle"
                 "scroll-reverser"
@@ -156,9 +154,11 @@
                 "tailscale-app"
                 "typeless"
 
-                # "stablyai/orca/orca"
+                # "chatgpt"
+                # "claude"
                 # "cloudflare-warp"
                 # "cmux"
+                # "codex-app"
                 # "d12frosted/emacs-plus/emacs-plus-app"
                 # "datagrip"
                 # "dbeaver-community"
@@ -166,11 +166,16 @@
                 # "emacs-plus"
                 # "eqmac"
                 # "fanny"
+                # "ghostty"
+                # "herdr-app"
                 # "intellij-idea"
                 # "istat-menus"
                 # "keycastr"
+                # "macvim-app"
                 # "microsoft-edge"
                 # "openvpn-connect"
+                # "stablyai/orca/orca"
+                # "stablyai/orca/orca"
                 # "warp"
                 # "yubico-authenticator"
                 # "yubico-yubikey-manager"
@@ -180,6 +185,20 @@
             };
 
             system = {
+              activationScripts.postActivation.text = ''
+                postgresqlDataDir=/opt/homebrew/var/postgresql@18
+                if [ -f "$postgresqlDataDir/postgresql.conf" ]; then
+                  mkdir -p "$postgresqlDataDir/conf.d"
+                  ln -sfn ${./postgresql-local.conf} "$postgresqlDataDir/conf.d/postgresql-local.conf"
+                  postgresqlInclude="include_if_exists = 'conf.d/postgresql-local.conf'"
+                  if ! grep -Fqx "$postgresqlInclude" "$postgresqlDataDir/postgresql.conf"; then
+                    if [ ! -e "$postgresqlDataDir/postgresql.conf.before-nix-config" ]; then
+                      cp -p "$postgresqlDataDir/postgresql.conf" "$postgresqlDataDir/postgresql.conf.before-nix-config"
+                    fi
+                    printf '\n%s\n' "$postgresqlInclude" >> "$postgresqlDataDir/postgresql.conf"
+                  fi
+                fi
+              '';
               stateVersion = 5;
               defaults = {
                 NSGlobalDomain = {
@@ -200,11 +219,12 @@
                   largesize = 30;
                   show-recents = true;
                   persistent-apps = [
-                    "/Applications/Safari.app"
                     "/Applications/Google Chrome.app"
-                    "/Applications/Cursor.app"
-                    "/Applications/DataGrip.app"
-                    "/System/Applications/Mail.app"
+
+                    # "/Applications/Safari.app"
+                    # "/System/Applications/Mail.app"
+                    # "/Applications/Cursor.app"
+                    # "/Applications/DataGrip.app"
                   ];
                   persistent-others = [
                     "/Users/${user}/Documents"
@@ -223,6 +243,7 @@
                   globalstate = 2;
                 };
                 CustomUserPreferences = {
+                  "com.googlecode.iterm2" = builtins.fromJSON (builtins.readFile ./iterm2_preferences.json);
                   "NSGlobalDomain" = {
                     "CGDisableCursorLocationMagnification" = false;
                   };
@@ -263,6 +284,10 @@
               home.stateVersion = "25.05";
               home.username = user;
               home.homeDirectory = "/Users/${user}";
+              home.file."/Users/${user}/.zshenv" = {
+                source = ./zshenv;
+                force = true;
+              };
               home.file."/Users/${user}/.zprofile" = {
                 source = ./zprofile;
                 force = true;
@@ -305,6 +330,10 @@
               };
               home.file."/Users/${user}/.tmux.conf" = {
                 source = ./tmux.conf;
+                force = true;
+              };
+              home.file."/Users/${user}/.vimrc" = {
+                source = ./vimrc;
                 force = true;
               };
               home.file."/Users/${user}/.local/bin/git-rebase-editor.sh" = {
