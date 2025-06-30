@@ -1,0 +1,12 @@
+IgnoreUnknown UseKeychain
+
+Host github.com
+	IgnoreUnknown UseKeychain
+	AddKeysToAgent yes
+	UseKeychain yes
+	IdentityFile ~/.ssh/github_ed25519
+Host ryicohmac-mini.tailaa8b54.ts.net
+	IgnoreUnknown UseKeychain
+	AddKeysToAgent yes
+	UseKeychain yes
+	IdentityFile ~/.ssh/mac_mini_ed25519
