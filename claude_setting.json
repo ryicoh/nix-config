@@ -1,0 +1,14 @@
+{
+  "model": "opus",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    }
+  },
+  "tui": "fullscreen",
+  "theme": "light",
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  }
+}

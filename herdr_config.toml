@@ -5,6 +5,8 @@ prefix = "ctrl+s"
 detach = "prefix+d"
 split_vertical = "prefix+percent"
 split_horizontal = "prefix+double-quote"
+move_tab_previous = "prefix+{"
+move_tab_next = "prefix+}"
 
 [theme]
 name = "catppuccin-latte"
@@ -13,9 +15,15 @@ name = "catppuccin-latte"
 mouse_capture = true
 mouse_scroll_lines = 5
 
+[ui.sidebar.spaces]
+rows = [
+  ["state_icon", { token = "workspace", bold = true }],
+  ["state_text"],
+]
+
 [ui.sidebar.agents]
 rows = [
-  ["state_icon", "state_text"],
+  [{ token = "workspace", bold = true }, "tab"],
+  ["state_icon", "state_text", { token = "agent", bold = true }],
   ["terminal_title_stripped"],
-  ["workspace", "tab"],
 ]
