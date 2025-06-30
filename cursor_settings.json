@@ -1,0 +1,173 @@
+{
+  "editor.fontSize": 10.5,
+  "window.commandCenter": true,
+  "extensions.ignoreRecommendations": true,
+  "git.autofetch": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "cursor.cpp.disabledLanguages": [],
+  "cursor.cpp.enablePartialAccepts": true,
+  "cursor.terminal.usePreviewBox": true,
+  "cursor.composer.collapsePaneInputBoxPills": true,
+  "cursor.diffs.useCharacterLevelDiffs": true,
+  "githubPullRequests.pullBranch": "never",
+  "jestrunner.codeLens": ["run"],
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "githubPullRequests.terminalLinksHandler": "github",
+  "terminal.integrated.macOptionIsMeta": true,
+  "roo-cline.allowedCommands": [
+    "make",
+    "npm",
+    "pnpm",
+    "bun",
+    "git status",
+    "git diff",
+    "ls"
+  ],
+  "vim.sneak": true,
+  "vim.normalModeKeyBindings": [
+    {
+      "before": [
+        "[",
+        "g"
+      ],
+      "commands": [
+        "editor.action.marker.prev"
+      ],
+      "silent": true
+    },
+    {
+      "before": [
+        "]",
+        "g"
+      ],
+      "commands": [
+        "editor.action.marker.next"
+      ],
+      "silent": true
+    }
+  ],
+  "githubPullRequests.pushBranch": "always",
+  "files.insertFinalNewline": true,
+  "git.blame.statusBarItem.enabled": false,
+  "git.blame.editorDecoration.enabled": true,
+  "vitest.nodeExecArgs": ["-r", "dotenv/config"],
+  "vitest.nodeEnv": {
+    "DOTENV_CONFIG_PATH": ".env.test"
+  },
+  "workbench.colorTheme": "Cursor Light",
+  "accessibility.signals.terminalBell": {
+    "announcement": "off",
+    "sound": "off"
+  },
+  "accessibility.signals.lineHasBreakpoint": {
+    "sound": "off",
+    "announcement": "auto"
+  },
+  "accessibility.signals.chatEditModifiedFile": {
+    "sound": "off"
+  },
+  "accessibility.signals.chatRequestSent": {
+    "sound": "off",
+    "announcement": "auto"
+  },
+  "accessibility.signals.chatResponseReceived": {
+    "sound": "off"
+  },
+  "accessibility.signals.clear": {
+    "sound": "off",
+    "announcement": "auto"
+  },
+  "accessibility.signals.codeActionApplied": {
+    "sound": "off"
+  },
+  "accessibility.signals.codeActionTriggered": {
+    "sound": "off"
+  },
+  "accessibility.signals.onDebugBreak": {
+    "sound": "off",
+    "announcement": "auto"
+  },
+  "accessibility.signals.diffLineDeleted": {
+    "sound": "off"
+  },
+  "accessibility.signals.diffLineInserted": {
+    "sound": "off"
+  },
+  "accessibility.signals.diffLineModified": {
+    "sound": "off"
+  },
+  "accessibility.signals.editsKept": {
+    "sound": "off",
+    "announcement": "auto"
+  },
+  "accessibility.signals.positionHasError": {
+    "sound": "off",
+    "announcement": "auto"
+  },
+  "accessibility.signals.lineHasError": {
+    "sound": "off",
+    "announcement": "auto"
+  },
+  "accessibility.signals.lineHasFoldedArea": {
+    "sound": "off",
+    "announcement": "auto"
+  },
+  "accessibility.signals.lineHasInlineSuggestion": {
+    "sound": "off"
+  },
+  "accessibility.signals.noInlayHints": {
+    "sound": "off",
+    "announcement": "auto"
+  },
+  "accessibility.signals.notebookCellCompleted": {
+    "sound": "off",
+    "announcement": "auto"
+  },
+  "accessibility.signals.notebookCellFailed": {
+    "sound": "off",
+    "announcement": "auto"
+  },
+  "accessibility.signals.progress": {
+    "sound": "off",
+    "announcement": "auto"
+  },
+  "accessibility.signals.taskCompleted": {
+    "sound": "off",
+    "announcement": "auto"
+  },
+  "accessibility.signals.taskFailed": {
+    "sound": "off",
+    "announcement": "auto"
+  },
+  "accessibility.signals.terminalCommandFailed": {
+    "sound": "off",
+    "announcement": "auto"
+  },
+  "accessibility.signals.terminalCommandSucceeded": {
+    "sound": "off",
+    "announcement": "auto"
+  },
+  "accessibility.signals.terminalQuickFix": {
+    "sound": "off",
+    "announcement": "auto"
+  },
+  "accessibility.signals.editsUndone": {
+    "sound": "off",
+    "announcement": "auto"
+  },
+  "accessibility.signals.voiceRecordingStarted": {
+    "sound": "off"
+  },
+  "accessibility.signals.voiceRecordingStopped": {
+    "sound": "off"
+  },
+  "accessibility.signals.positionHasWarning": {
+    "sound": "off",
+    "announcement": "auto"
+  },
+  "accessibility.signals.lineHasWarning": {
+    "sound": "off",
+    "announcement": "auto"
+  }
+}
+
