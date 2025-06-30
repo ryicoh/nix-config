@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    "vscodevim.vim",
+    "bbenoist.nix",
+    "firsttris.vscode-jest-runner",
+    "rooveterinaryinc.roo-cline",
+    "denoland.vscode-deno",
+    "golang.go",
+    "ms-azuretools.vscode-docker",
+    "github.vscode-github-actions",
+    "GitHub.vscode-pull-request-github",
+    "prisma.prisma",
+    "HashiCorp.terraform"
+  ]
+}
