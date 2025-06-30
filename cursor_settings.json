@@ -1,0 +1,53 @@
+{
+  "editor.fontSize": 10.5,
+  "window.commandCenter": true,
+  "extensions.ignoreRecommendations": true,
+  "git.autofetch": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "cursor.cpp.disabledLanguages": [],
+  "cursor.cpp.enablePartialAccepts": true,
+  "cursor.terminal.usePreviewBox": true,
+  "cursor.composer.collapsePaneInputBoxPills": true,
+  "cursor.diffs.useCharacterLevelDiffs": true,
+  "githubPullRequests.pullBranch": "never",
+  "jestrunner.codeLens": [],
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "githubPullRequests.terminalLinksHandler": "github",
+  "terminal.integrated.macOptionIsMeta": true,
+  "roo-cline.allowedCommands": [
+    "make",
+    "npm",
+    "pnpm",
+    "bun",
+    "git status",
+    "git diff",
+    "ls"
+  ],
+  "vim.sneak": true,
+  "vim.normalModeKeyBindings": [
+    {
+      "before": [
+        "[",
+        "g"
+      ],
+      "commands": [
+        "editor.action.marker.prev"
+      ],
+      "silent": true
+    },
+    {
+      "before": [
+        "]",
+        "g"
+      ],
+      "commands": [
+        "editor.action.marker.next"
+      ],
+      "silent": true
+    }
+  ],
+  "githubPullRequests.pushBranch": "always",
+  "files.insertFinalNewline": true,
+  "git.blame.statusBarItem.enabled": false,
+  "git.blame.editorDecoration.enabled": true
+}
