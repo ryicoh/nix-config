@@ -1,0 +1,21 @@
+onboarding = false
+
+[keys]
+prefix = "ctrl+s"
+detach = "prefix+d"
+split_vertical = "prefix+percent"
+split_horizontal = "prefix+double-quote"
+
+[theme]
+name = "catppuccin-latte"
+
+[ui]
+mouse_capture = true
+mouse_scroll_lines = 5
+
+[ui.sidebar.agents]
+rows = [
+  ["state_icon", "state_text"],
+  ["terminal_title_stripped"],
+  ["workspace", "tab"],
+]

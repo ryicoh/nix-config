@@ -1,0 +1,11 @@
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+approvals_reviewer = "auto_review"
+
+[tui]
+screen_reader_detection_done = true
+mouse_scroll_speed = 5.0
+
+[features]
+hooks = true
+

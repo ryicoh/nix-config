@@ -1,0 +1,5 @@
+worktree-path = "../{{ branch | sanitize }}"
+skip-shell-integration-prompt = true
+
+[pre-start]
+mise-setup = "if command -v mise >/dev/null 2>&1 && mise tasks info setup >/dev/null 2>&1; then mise setup; fi"
