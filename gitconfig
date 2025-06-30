@@ -1,0 +1,39 @@
+[user]
+	name = ryicoh
+	email = ryicoh@gmail.com
+	signingkey = ~/.ssh/github_ed25519.pub
+
+[push]
+	autoSetupRemote = true
+	useForceIfIncludes = true
+
+[pull]
+	ff = only
+
+[commit]
+	gpgsign = true
+
+[gpg]
+	program = gpg
+	format = ssh
+
+[rerere]
+	enabled = true
+	autoupdate = true
+
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+
+[rebase]
+	autosquash = true
+
+[alias]
+	fixup = "!f(){ commit=$(git log --oneline | peco | awk '{print $1}'); test -n \"$commit\" && git commit --fixup \"$commit\"; }; f"
+	fixup-all = "!zsh -fc 'typeset -A files_by_commit; while IFS= read -r -d \"\" f; do commit=$(git log -1 --format=%H -- \"$f\") || exit 1; [[ -n \"$commit\" ]] || continue; files_by_commit[$commit]+=$'\"'\"'\\n'\"'\"'\"$f\"; done < <(git diff --name-only -z HEAD); for commit in ${(k)files_by_commit}; do files=(${(f)files_by_commit[$commit]}); files=(${files:#}); (( ${#files} > 0 )) || continue; subject=$(git log -1 --format=%s \"$commit\") || exit 1; while [[ \"$subject\" == fixup\\!* ]]; do subject=${subject#fixup! }; done; git commit -m \"fixup! $subject\" --only -- \"${files[@]}\" || exit 1; done'"
+

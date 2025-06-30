@@ -1,0 +1,8 @@
+worktree-path = ".w/{{ branch | sanitize }}"
+skip-shell-integration-prompt = true
+
+[commit.generation]
+command = "CLAUDECODE= MAX_THINKING_TOKENS=0 claude -p --no-session-persistence --model=haiku --tools='' --disable-slash-commands --setting-sources='' --system-prompt=''"
+
+[pre-start]
+copy-wt-config = "test -f {{ repo_path }}/.config/wt.toml && mkdir -p .config && cp {{ repo_path }}/.config/wt.toml .config/wt.toml || true"
