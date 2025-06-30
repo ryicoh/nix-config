@@ -1,0 +1,14 @@
+#!/bin/sh
+set -eu
+
+uid=$(/usr/bin/id -u)
+socket=$(
+  /bin/launchctl print "gui/$uid/com.openssh.ssh-agent" 2>/dev/null |
+    /usr/bin/awk '$1 == "SSH_AUTH_SOCK" && $2 == "=>" { print $3; exit }'
+)
+
+if [ -z "$socket" ] || [ ! -S "$socket" ]; then
+  socket=none
+fi
+
+exec /usr/bin/ssh -o BatchMode=yes -o "IdentityAgent=$socket" "$@"

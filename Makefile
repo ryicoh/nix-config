@@ -1,8 +1,74 @@
-default: install
+default: run-all
 
-install:
-	-nix profile remove nix-config
-	nix profile install
+ETC_DIR ?= /etc
 
-uninstall:
-	nix profile remove nix-config
+.PHONY: brew-uninstall clean
+
+clean:
+	rm -f tmp/run-darwin.sha256 tmp/run-skills.sha256
+
+brew-uninstall:
+	@set -eu; \
+	brewfile=$$(mktemp); \
+	trap 'rm -f "$$brewfile"' EXIT; \
+	nix eval --raw .#darwinConfigurations.default.config.homebrew.brewfile --impure --extra-experimental-features 'flakes nix-command' > "$$brewfile"; \
+	brew bundle cleanup --file="$$brewfile" --formula --cask --force
+
+run-all:
+	$(MAKE) run-darwin
+	$(MAKE) run-home
+	$(MAKE) run-skills
+	$(MAKE) claude-settings
+
+run-darwin:
+	@set -eu; \
+	darwin_derivation=$$(nix eval --raw .#darwinConfigurations.default.system.drvPath --impure --extra-experimental-features 'flakes nix-command'); \
+	makefile_hash=$$(shasum -a 256 Makefile); \
+	hash=$$(printf '%s\n' "$$darwin_derivation" "$$makefile_hash" "$(ETC_DIR)" | shasum -a 256); \
+	if [ -f tmp/run-darwin.sha256 ] && [ "$$hash" = "$$(cat tmp/run-darwin.sha256)" ]; then \
+		echo "Skipping run-darwin: darwin configuration is unchanged"; \
+		exit 0; \
+	fi; \
+	sudo $(MAKE) apply-darwin ETC_DIR="$(ETC_DIR)"; \
+	mkdir -p tmp; \
+	printf '%s\n' "$$hash" > tmp/run-darwin.sha256
+
+apply-darwin:
+	@set -eu; \
+	for name in zshrc zprofile bashrc; do \
+		file="$(ETC_DIR)/$$name"; \
+		if [ -L "$$file" ] || [ ! -e "$$file" ]; then continue; fi; \
+		backup="$$file.before-nix-darwin"; \
+		if [ -e "$$backup" ]; then \
+			if ! cmp -s "$$backup" "$$file"; then \
+				echo "Existing backup differs from $$file:"; \
+				diff -u "$$backup" "$$file" || true; \
+			fi; \
+		fi; \
+		n=1; \
+		while [ -e "$$backup" ] || [ -L "$$backup" ]; do \
+			backup="$$file.before-nix-darwin.$$n"; \
+			n=$$((n + 1)); \
+		done; \
+		mv "$$file" "$$backup"; \
+		echo "Moved $$file to $$backup"; \
+	done
+	sudo -u ryicoh /opt/homebrew/bin/brew trust --formula hashicorp/tap/terraform
+	sudo -u ryicoh /opt/homebrew/bin/brew trust --formula lambdalisue/cclens/cclens
+	nix run nix-darwin --extra-experimental-features 'flakes nix-command' -- switch --flake .#default --impure
+
+run-home:
+	nix run nixpkgs#home-manager -- switch --flake .#default
+
+fmt:
+	nix fmt --extra-experimental-features 'flakes nix-command'
+
+CLAUDE_SETTINGS ?= $(HOME)/.claude/settings.json
+
+.PHONY: claude-settings
+claude-settings:
+	cp $(CLAUDE_SETTINGS) $(CLAUDE_SETTINGS).bak
+	jq -s '.[0] * .[1]' $(CLAUDE_SETTINGS).bak claude_setting.json > $(CLAUDE_SETTINGS)
+
+# Keep global coding-agent skills in a separate declarative file.
+include agent-skills.mk

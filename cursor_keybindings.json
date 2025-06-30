@@ -1,0 +1,32 @@
+[
+    {
+        "key": "alt+cmd+c",
+        "command": "copyRelativeFilePath",
+        "when": "editorFocus"
+    },
+    {
+        "key": "cmd+r shift+alt+cmd+c",
+        "command": "-copyRelativeFilePath",
+        "when": "editorFocus"
+    },
+    {
+        "key": "alt+cmd+1",
+        "command": "editor.foldLevel1",
+        "when": "editorTextFocus && foldingEnabled"
+    },
+    {
+        "key": "alt+cmd+2",
+        "command": "editor.foldLevel2",
+        "when": "editorTextFocus && foldingEnabled"
+    },
+    {
+        "key": "alt+cmd+3",
+        "command": "editor.foldLevel3",
+        "when": "editorTextFocus && foldingEnabled"
+    },
+    {
+        "key": "alt+cmd+j",
+        "command": "editor.unfoldAll",
+        "when": "editorTextFocus && foldingEnabled"
+    }
+]

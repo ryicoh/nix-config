@@ -1,0 +1,39 @@
+{
+  "agentPushNotifEnabled": true,
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "autoMode": {
+    "environment": [
+      "$defaults",
+      "**Org-specific CLIs**: herdr, mise — routine toolchain/dev CLIs"
+    ]
+  },
+  "enabledPlugins": {
+    "cclens@cclens": true,
+    "slack@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "cclens": {
+      "source": {
+        "repo": "lambdalisue/cclens",
+        "source": "github"
+      }
+    }
+  },
+  "language": "Japanese",
+  "model": "opus",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "medium"
+    }
+  },
+  "permissions": {
+    "allow": [
+      "Bash(mise safe-force-push *)"
+    ]
+  },
+  "theme": "light",
+  "tui": "fullscreen"
+}

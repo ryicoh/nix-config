@@ -1,0 +1,8 @@
+*.sw[a-z]
+.DS_Store
+.config/
+.w/
+.playwright-mcp/
+
+.claude
+.agents

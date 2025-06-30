@@ -1,0 +1,49 @@
+[core]
+	sshCommand = /Users/ryicoh/.local/bin/git-ssh-mac-mini-agent
+
+[init]
+	defaultBranch = main
+
+[user]
+	name = ryicoh
+	email = ryicoh@gmail.com
+	signingkey = /Users/ryicoh/.ssh/github_ed25519.pub
+
+[push]
+	autoSetupRemote = true
+	useForceIfIncludes = true
+
+[pull]
+	ff = only
+
+[commit]
+	gpgsign = false
+
+[gpg]
+	program = gpg
+	format = ssh
+
+[rerere]
+	enabled = true
+	autoupdate = true
+
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+
+[rebase]
+	autosquash = true
+
+[branch]
+	autoSetupMerge = simple
+
+[sequence]
+	editor = /Users/ryicoh/.local/bin/git-rebase-editor.sh
+
+[diff]
+	colorMoved = dimmed-zebra
