@@ -69,7 +69,7 @@
                 "libfido2"
                 "mise"
                 "mysql@8.0"
-                "node@22"
+                "node@26"
                 "node@24"
                 "openjdk"
                 {
@@ -156,6 +156,7 @@
                 "tailscale-app"
                 "typeless"
 
+                # "macvim-app"
                 # "stablyai/orca/orca"
                 # "cloudflare-warp"
                 # "cmux"

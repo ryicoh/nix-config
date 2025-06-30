@@ -5,7 +5,7 @@ Host github.com
 	AddKeysToAgent yes
 	UseKeychain yes
 	IdentityFile ~/.ssh/github_ed25519
-Host ryicohmac-mini.tailaa8b54.ts.net
+Host ryicoh-m4-mac-mini.tailaa8b54.ts.net
 	IgnoreUnknown UseKeychain
 	AddKeysToAgent yes
 	UseKeychain yes
