@@ -5,6 +5,7 @@ ETC_DIR ?= /etc
 run-all:
 	sudo $(MAKE) run-darwin
 	$(MAKE) run-home
+	$(MAKE) run-skills
 
 run-darwin:
 	@set -eu; \
@@ -34,3 +35,6 @@ run-home:
 
 fmt:
 	nix fmt --extra-experimental-features 'flakes nix-command'
+
+# Keep global coding-agent skills in a separate declarative file.
+include agent-skills.mk
