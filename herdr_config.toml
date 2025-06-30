@@ -1,0 +1,109 @@
+# ~/.config/herdr/config.toml
+# home-managerで管理(source: nix-config/herdr_config.toml)
+# 変更を反映するには darwin-rebuild / home-manager switch 後に
+# `herdr server reload-config` を実行する
+
+onboarding = false
+
+[terminal]
+# Mac では login shell 扱いになり、Homebrew などの PATH 初期化と相性がよい
+shell_mode = "auto"
+
+# tmux の split-window -c "#{pane_current_path}" 相当
+# 新しい pane/tab/workspace は元 pane / workspace の cwd を引き継ぐ
+new_cwd = "follow"
+
+[keys]
+# tmux:
+#   unbind C-b
+#   set -g prefix C-s
+prefix = "ctrl+s"
+
+# detach
+detach = "prefix+q"
+
+# workspace / tab
+workspace_picker = "prefix+w"
+goto = "prefix+g"
+new_workspace = "prefix+shift+n"
+
+new_tab = "prefix+c"
+previous_tab = "prefix+p"
+next_tab = "prefix+n"
+switch_tab = "prefix+1..9"
+
+# tmux:
+#   bind h/j/k/l select-pane ...
+#   bind C-h/C-j/C-k/C-l select-pane ...
+focus_pane_left = ["prefix+h", "prefix+ctrl+h"]
+focus_pane_down = ["prefix+j", "prefix+ctrl+j"]
+focus_pane_up = ["prefix+k", "prefix+ctrl+k"]
+focus_pane_right = ["prefix+l", "prefix+ctrl+l"]
+
+# Herdr の navigate mode 用。ここでは h/j/k/l をそのまま使う
+navigate_pane_left = "h"
+navigate_pane_down = "j"
+navigate_pane_up = "k"
+navigate_pane_right = "l"
+
+# tmux:
+#   bind % split-window -h
+#   bind '"' split-window -v
+#
+# Herdr公式の安定デフォルト(startup warning を避けるためこちらを採用):
+#   split_vertical   = "prefix+v"      # 右に分割
+#   split_horizontal = "prefix+minus"  # 下に分割
+#
+# tmux のキーに寄せたい場合は下2行を有効化する(パースが通らなければ warning が出る)
+#   split_vertical   = "prefix+percent"
+#   split_horizontal = "prefix+double_quote"
+split_vertical = "prefix+v"
+split_horizontal = "prefix+minus"
+
+copy_mode = "prefix+["
+
+close_pane = "prefix+x"
+zoom = "prefix+z"
+resize_mode = "prefix+r"
+
+toggle_sidebar = "prefix+b"
+
+[ui]
+# AI の状態を見たい用途なら priority が見やすい
+# blocked / done / working / idle の優先順で並ぶ
+agent_panel_sort = "priority"
+
+# pane border に agent 名を出す
+show_agent_labels_on_pane_borders = true
+
+# Herdr 側でマウス操作を使う
+mouse_capture = true
+
+[ui.toast]
+# AI が完了・入力待ちになった時に macOS 通知を出す
+# macOS では terminal-notifier があれば使い、なければ osascript にフォールバック
+delivery = "system"
+delay_seconds = 1
+
+[ui.sound]
+enabled = true
+
+[ui.sound.agents]
+claude = "on"
+codex = "on"
+opencode = "on"
+
+[advanced]
+scrollback_limit_bytes = 10485760
+
+[session]
+resume_agents_on_restore = true
+
+[experimental]
+# 日本語入力中でも prefix 操作しやすくする macOS 向け設定
+switch_ascii_input_source_in_prefix = true
+
+# Claude Code / Codex などで IME 候補位置がズレる場合に有効化
+# まず false で使って、困ったら true にする
+reveal_hidden_cursor_for_cjk_ime = false
+cjk_ime_agents = ["claude", "codex", "opencode"]
