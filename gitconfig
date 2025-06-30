@@ -1,0 +1,33 @@
+[user]
+	name = ryicoh
+	email = ryicoh@gmail.com
+	signingkey = ~/.ssh/github_ed25519.pub
+
+[push]
+	autoSetupRemote = true
+
+[pull]
+	ff = only
+
+[commit]
+	gpgsign = true
+
+[gpg]
+	program = gpg
+	format = ssh
+
+[rerere]
+	enabled = true
+
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+
+[rebase]
+	autosquash = true
+
