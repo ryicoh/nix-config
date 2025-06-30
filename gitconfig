@@ -1,0 +1,13 @@
+[push]
+	autoSetupRemote = true
+[user]
+	name = ryicoh
+	email = ryicoh@gmail.com
+	signingkey = ~/.ssh/github_ed25519.pub
+[pull]
+	ff = only
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg
+	format = ssh
