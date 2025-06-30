@@ -1,0 +1,12 @@
+[push]
+	autoSetupRemote = true
+[user]
+	name = ryicoh
+	email = ryicoh@gmail.com
+	signingkey = 1DF0AF6803B51276
+[pull]
+	ff = only
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg
