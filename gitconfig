@@ -1,0 +1,36 @@
+[user]
+	name = ryicoh
+	email = ryicoh@gmail.com
+	signingkey = ~/.ssh/github_ed25519.pub
+
+[push]
+	autoSetupRemote = true
+
+[pull]
+	ff = only
+
+[commit]
+	gpgsign = true
+
+[gpg]
+	program = gpg
+	format = ssh
+
+[rerere]
+	enabled = true
+
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+
+[rebase]
+	autosquash = true
+
+[alias]
+	fixup = "!f(){ commit=$(git log --oneline | peco | awk '{print $1}'); test -n \"$commit\" && git commit --fixup \"$commit\"; }; f"
+ 	stage-peco = "!f() { sel=$({ git diff --name-only; git ls-files --others --exclude-standard; } | sort -u | peco); [ -n \"$sel\" ] || exit 0; printf \"%s\n\" \"$sel\" | while IFS= read -r file; do git add -- \"$file\"; done; }; f"
