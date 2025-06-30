@@ -1,0 +1,31 @@
+[user]
+	name = ryicoh
+	email = ryicoh@gmail.com
+	signingkey = ~/.ssh/github_ed25519.pub
+
+[push]
+	autoSetupRemote = true
+
+[pull]
+	ff = only
+
+[commit]
+	gpgsign = true
+
+[gpg]
+	program = gpg
+	format = ssh
+
+
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+
+[alias]
+	fixup = !git log --oneline -n 20 | fzf | awk '{print $1}' | xargs --no-run-if-empty -I COMMIT -o sh -c 'git commit --fixup COMMIT && git rebase -i --autosquash COMMIT~'
+
