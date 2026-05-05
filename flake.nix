@@ -223,9 +223,16 @@
 
             power = {
               sleep = {
+                computer = "never";
                 display = 15;
               };
             };
+
+            system.activationScripts.pmset.text = ''
+              /usr/bin/pmset -a powernap 1
+              /usr/bin/pmset -a womp 1
+              /usr/bin/pmset -a autorestart 1
+            '';
 
             security = {
               pam = {
