@@ -31,7 +31,7 @@
 
       formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-tree;
 
-      darwinConfigurations.default = nix-darwin.lib.darwinSystem {
+      darwinConfigurations."home-server" = nix-darwin.lib.darwinSystem {
         system = system;
         modules = [
           {
@@ -41,6 +41,12 @@
                 experimental-features = "nix-command flakes";
                 max-jobs = 8;
               };
+            };
+
+            networking = {
+              hostName = "home-server";
+              computerName = "home-server";
+              localHostName = "home-server";
             };
 
             homebrew = {

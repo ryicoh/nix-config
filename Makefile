@@ -5,7 +5,7 @@ run-all:
 	$(MAKE) run-home
 
 run-darwin:
-	nix run nix-darwin --extra-experimental-features 'flakes nix-command' -- switch --flake .#default --impure
+	nix run nix-darwin --extra-experimental-features 'flakes nix-command' -- switch --flake .#home-server --impure
 
 run-home:
 	nix run nixpkgs#home-manager -- switch --flake .#default
