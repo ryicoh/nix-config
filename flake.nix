@@ -57,9 +57,8 @@
                 cleanup = "uninstall";
               };
               taps = [
-                "hashicorp/tap"
                 # "homebrew/services"
-                "d12frosted/emacs-plus"
+                # "d12frosted/emacs-plus"
               ];
               brews = [
                 "git"
@@ -69,34 +68,18 @@
                 # "yarn"
                 "oven-sh/bun/bun"
 
-                "gcc"
-                "cmake"
-                "bison"
-
-                "git-flow"
-                "git-lfs"
-
                 # "deno"
                 # "oven-sh/bun/bun"
-                "golang"
-                "rust"
-                "rustup"
+                # "golang"
                 # "dotnet"
                 # "coursier"
                 # "cmake"
-                "protobuf"
                 # "pkgconf"
 
                 # "planetscale/tap/pscale"
-                "hashicorp/tap/terraform"
-                "tflint"
-                "trivy"
 
                 "postgresql@17"
-                "mysql@8.0"
 
-                "cloud-sql-proxy"
-                "awscli"
                 # "aws-cdk"
 
                 "tmux"
@@ -109,22 +92,15 @@
 
                 # "poppler"
 
-                "kubernetes-cli"
-                "kubectx"
-                "stern"
-                "helm"
-                "kubeseal"
-
                 # "gnupg"
                 # "pinentry-mac"
                 # "ykman"
                 # "yubikey-personalization"
                 "openssh"
-                "libfido2"
 
                 "tbls"
 
-                "cloudflared"
+                # "cloudflared"
                 "gh"
                 "ast-grep"
 
@@ -138,31 +114,31 @@
               ];
               casks = [
                 # "cloudflare-warp"
-                "gcloud-cli"
+                # "gcloud-cli"
                 # "keycastr"
                 # "libreoffice"
-                "cursor"
-                "datagrip"
+                # "cursor"
+                # "datagrip"
                 # "dbeaver-community"
                 "claude"
                 "claude-code"
                 "hot"
-                "zoom"
+                # "zoom"
                 # "fanny"
                 # "istat-menus"
-                "aws-vpn-client"
-                "openvpn-connect"
-                "microsoft-edge"
-                "yubico-authenticator"
+                # "aws-vpn-client"
+                # "openvpn-connect"
+                # "microsoft-edge"
+                # "yubico-authenticator"
                 # "yubico-yubikey-manager"
                 # "eqmac"
-                "docker-desktop"
-                "scroll-reverser"
-                "rectangle"
-                "slack"
+                # "docker-desktop"
+                # "scroll-reverser"
+                # "rectangle"
+                # "slack"
                 # "emacs-plus"
-                "d12frosted/emacs-plus/emacs-plus-app"
-                "ghostty"
+                # # "d12frosted/emacs-plus/emacs-plus-app"
+                # # "ghostty"
               ];
             };
 
