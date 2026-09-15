@@ -90,6 +90,7 @@
                 "agent-browser"
                 "hunk"
                 "uv"
+                "ffmpeg"
 
                 # "aws-cdk"
                 # "bison"
